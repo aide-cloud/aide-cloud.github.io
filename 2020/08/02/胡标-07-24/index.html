@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Nginx+Squid 实现微型CDN | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1.目的：实现对nginx和squid的结合使用，同时加深对两者的理解。深度剖析代理服务器的功能特点。 2.要求：1） 选取1台虚拟机作为源站（web服务器），在源站用nginx部署web服务器，并放上.txt、.jpg文件2） 选取1台虚拟机1台作为Nginx反向服务器3） 选取1台作为Squid服务器，并配置txt缓存1个月，jpg文件不缓存 3.服务器：源站服务器：      192.168">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nginx+Squid 实现微型CDN">
+<meta property="og:url" content="http://yoursite.com/2020/08/02/%E8%83%A1%E6%A0%87-07-24/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1.目的：实现对nginx和squid的结合使用，同时加深对两者的理解。深度剖析代理服务器的功能特点。 2.要求：1） 选取1台虚拟机作为源站（web服务器），在源站用nginx部署web服务器，并放上.txt、.jpg文件2） 选取1台虚拟机1台作为Nginx反向服务器3） 选取1台作为Squid服务器，并配置txt缓存1个月，jpg文件不缓存 3.服务器：源站服务器：      192.168">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/2020/08/02/%E8%83%A1%E6%A0%87-07-24/images%5CNginx.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/02/%E8%83%A1%E6%A0%87-07-24/images%5C%E6%BA%90%E7%AB%991.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/02/%E8%83%A1%E6%A0%87-07-24/images%5C%E6%BA%90%E7%AB%992.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/02/%E8%83%A1%E6%A0%87-07-24/images%5Csquid.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/02/%E8%83%A1%E6%A0%87-07-24/images%5CCDN.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/02/%E8%83%A1%E6%A0%87-07-24/images%5Chost.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/02/%E8%83%A1%E6%A0%87-07-24/images%5Chtml-1.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/02/%E8%83%A1%E6%A0%87-07-24/images%5Chtml-2.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/02/%E8%83%A1%E6%A0%87-07-24/images%5Ctxt-1.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/02/%E8%83%A1%E6%A0%87-07-24/images%5Ctxt-2png.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/02/%E8%83%A1%E6%A0%87-07-24/images%5Cjpg-1.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/02/%E8%83%A1%E6%A0%87-07-24/images%5Cjpg-2.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/02/%E8%83%A1%E6%A0%87-07-24/images%5Cstop-1.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/02/%E8%83%A1%E6%A0%87-07-24/images%5Cstop-2.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/02/%E8%83%A1%E6%A0%87-07-24/images%5Ccurl-html.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/02/%E8%83%A1%E6%A0%87-07-24/images%5Ccurl-jpg.png">
+<meta property="og:image" content="http://yoursite.com/2020/08/02/%E8%83%A1%E6%A0%87-07-24/images%5Ccurl-txt.png">
+<meta property="article:published_time" content="2020-08-02T11:36:26.386Z">
+<meta property="article:modified_time" content="2020-08-02T11:48:12.537Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/08/02/%E8%83%A1%E6%A0%87-07-24/images%5CNginx.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-胡标-07-24" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/02/%E8%83%A1%E6%A0%87-07-24/" class="article-date">
+  <time datetime="2020-08-02T11:36:26.386Z" itemprop="datePublished">2020-08-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Nginx+Squid 实现微型CDN
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-目的："><a href="#1-目的：" class="headerlink" title="1.目的："></a>1.目的：</h2><p>实现对nginx和squid的结合使用，同时加深对两者的理解。深度剖析代理服务器的功能特点。</p>
+<h2 id="2-要求："><a href="#2-要求：" class="headerlink" title="2.要求："></a>2.要求：</h2><p>1） 选取1台虚拟机作为源站（web服务器），在源站用nginx部署web服务器，并放上.txt、.jpg文件<br>2） 选取1台虚拟机1台作为Nginx反向服务器<br>3） 选取1台作为Squid服务器，并配置txt缓存1个月，jpg文件不缓存</p>
+<h2 id="3-服务器："><a href="#3-服务器：" class="headerlink" title="3.服务器："></a>3.服务器：</h2><p>源站服务器：      192.168.163.138（内）     192.168.163.139（内）                      CentOS 7 x64 </p>
+<p>Squid服务器：    192.168.8.2（外）         192.168.163.137（内）     <a target="_blank" rel="noopener" href="http://www.squid.com/">www.squid.com</a>       CentOS 7 x64 </p>
+<p>Nginx代理服务器： 192.168.8.245（外）     <a target="_blank" rel="noopener" href="http://www.hubiao-homework.com/">www.hubiao-homework.com</a>                  CentOS 7 x64 </p>
+<h2 id="4-软件："><a href="#4-软件：" class="headerlink" title="4.软件："></a>4.软件：</h2><h3 id="nginx"><a href="#nginx" class="headerlink" title="nginx:"></a>nginx:</h3><p>作用：用于作为源站服务代理和CDN代理（<font color=red>必须</font>，源站可用其他web服务代替）</p>
+<p>安装命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install nginx</span><br></pre></td></tr></table></figure>
+
+<p>使用命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">方式一：</span></span><br><span class="line">nginx #启动</span><br><span class="line">nginx -s stop             #停止</span><br><span class="line">nginx -s reload         #重启</span><br><span class="line"><span class="meta">#</span><span class="bash">方式二：</span></span><br><span class="line">service nginx start     #启动</span><br><span class="line">service nginx stop      #停止</span><br><span class="line">service nginx restart     #重启</span><br></pre></td></tr></table></figure>
+
+<p><font color=red >注意：用哪一种方式启动，就应以哪一种方式停止，否则会操作失败</font></p>
+<h3 id="squid"><a href="#squid" class="headerlink" title="squid:"></a>squid:</h3><p>作用：用于作为源站缓存服务（<font color=red>必须</font>）</p>
+<p>安装命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install squid</span><br></pre></td></tr></table></figure>
+
+<p>使用命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">service squid start        #启动</span><br><span class="line">service squid stop        #停止</span><br><span class="line">service squid restart    #重启</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="lrzsz"><a href="#lrzsz" class="headerlink" title="lrzsz:"></a>lrzsz:</h3><p>作用：用于在xshell上传或者下载文件（非必要）</p>
+<p>安装命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install lrzsz</span><br></pre></td></tr></table></figure>
+
+<p>使用命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">上传文件</span></span><br><span class="line">rz             #回车之后会弹出文件选择框，选择你想要上传的文件即可   不可上传文件夹 如有需要，可先压缩再上传</span><br><span class="line"><span class="meta">#</span><span class="bash">下载文件</span></span><br><span class="line">sz fileName.fileType    #回车，选择本地保存的目录，确认即可</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="意外情况："><a href="#意外情况：" class="headerlink" title="意外情况："></a>意外情况：</h3><p><font color=blue>nginx 安装不成功，可更新yum源。</font></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm</span><br><span class="line"></span><br><span class="line">yum -y install nginx</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-环境配置："><a href="#5-环境配置：" class="headerlink" title="5.环境配置："></a>5.环境配置：</h2><h3 id="防火墙配置："><a href="#防火墙配置：" class="headerlink" title="防火墙配置："></a>防火墙配置：</h3><p>打开22、80、3128端口</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --permanent --zone=public --add-port=22/tcp </span><br><span class="line">firewall-cmd --permanent --zone=public --add-port=80/tcp </span><br><span class="line">firewall-cmd --permanent --zone=public --add-port=3128/tcp </span><br></pre></td></tr></table></figure>
+
+<p>重启防火墙</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+
+<p>查看端口开启情况</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --list-port</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Nginx主配置文件："><a href="#Nginx主配置文件：" class="headerlink" title="Nginx主配置文件："></a>Nginx主配置文件：</h3><p><img src="images%5CNginx.png"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">user  nginx;</span><br><span class="line">worker_processes  1;</span><br><span class="line"></span><br><span class="line">error_log  /var/log/nginx/error.log warn;</span><br><span class="line">pid        /var/run/nginx.pid;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    worker_connections  1024;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">    include       /etc/nginx/mime.types;</span><br><span class="line">    default_type  application/octet-stream;</span><br><span class="line"></span><br><span class="line">    log_format  main  &#x27;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &#x27;</span><br><span class="line">                      &#x27;$status $body_bytes_sent &quot;$http_referer&quot; &#x27;</span><br><span class="line">                      &#x27;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&#x27;;</span><br><span class="line"></span><br><span class="line">    access_log  /var/log/nginx/access.log  main;</span><br><span class="line"></span><br><span class="line">    sendfile        on;</span><br><span class="line">    #tcp_nopush     on;</span><br><span class="line"></span><br><span class="line">    keepalive_timeout  65;</span><br><span class="line"></span><br><span class="line">    #gzip  on;</span><br><span class="line"></span><br><span class="line">    include /etc/nginx/conf.d/*.conf;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="源站配置："><a href="#源站配置：" class="headerlink" title="源站配置："></a>源站配置：</h3><p><img src="images%5C%E6%BA%90%E7%AB%991.png"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">        listen 80;</span><br><span class="line">        server_name 192.168.163.139;</span><br><span class="line">        root /etc/nginx/conf.d;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">                index index.html;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="images%5C%E6%BA%90%E7%AB%992.png"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">        listen 80;</span><br><span class="line">        server_name www.hubiao.com;</span><br><span class="line">        root /etc/nginx/conf.d;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">                index  index.html;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Squid配置："><a href="#Squid配置：" class="headerlink" title="Squid配置："></a>Squid配置：</h3><p><img src="images%5Csquid.png"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">http_access     allow all</span><br><span class="line">http_port       3128 transparent</span><br><span class="line">http_port       80 accel vhost</span><br><span class="line"></span><br><span class="line">cache_peer        192.168.163.138 parent 80 0 originserver round-robin weight=1</span><br><span class="line">cache_peer_access 192.168.163.138 allow all</span><br><span class="line"></span><br><span class="line">cache_peer        192.168.163.139 parent 80 0 originserver round-robin weight=1</span><br><span class="line">cache_peer_access 192.168.163.139 allow all</span><br><span class="line"></span><br><span class="line">acl allow_txt url_regex -i \.(txt)</span><br><span class="line">cache allow allow_txt</span><br><span class="line">refresh_pattern -i \.(txt)$ 43200 100% 43200</span><br><span class="line"></span><br><span class="line">acl acl_nocache url_regex -i .*</span><br><span class="line">cache deny acl_nocache</span><br><span class="line"></span><br><span class="line">coredump_dir /var/spool/squid</span><br><span class="line"></span><br><span class="line">cache_mem 64 MB</span><br><span class="line">maximum_object_size 4 MB</span><br><span class="line">cache_dir ufs /var/spool/squid 2000 16 256</span><br><span class="line">access_log /var/log/squid/access.log</span><br><span class="line">visible_hostname squid-server</span><br><span class="line">cache_mgr biao.hu@baishan.com</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Nginx代理配置："><a href="#Nginx代理配置：" class="headerlink" title="Nginx代理配置："></a>Nginx代理配置：</h3><p><img src="images%5CCDN.png"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">upstream myServer &#123;</span><br><span class="line">        server 192.168.8.2:80;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">        listen 80;</span><br><span class="line">        server_name www.hubiao-homework.com;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">                proxy_pass http://myServer;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="本地host配置："><a href="#本地host配置：" class="headerlink" title="本地host配置："></a>本地host配置：</h3><p><img src="images%5Chost.png"></p>
+<h2 id="6-访问Nginx代理服务器"><a href="#6-访问Nginx代理服务器" class="headerlink" title="6.访问Nginx代理服务器"></a>6.访问Nginx代理服务器</h2><h3 id="www-hubiao-homework-com"><a href="#www-hubiao-homework-com" class="headerlink" title="www.hubiao-homework.com"></a><a target="_blank" rel="noopener" href="http://www.hubiao-homework.com/">www.hubiao-homework.com</a></h3><p><img src="images%5Chtml-1.png"></p>
+<p><img src="images%5Chtml-2.png"></p>
+<h3 id="www-hubiao-homework-com-test-txt"><a href="#www-hubiao-homework-com-test-txt" class="headerlink" title="www.hubiao-homework.com/test.txt"></a><a target="_blank" rel="noopener" href="http://www.hubiao-homework.com/test.txt">www.hubiao-homework.com/test.txt</a></h3><p><img src="images%5Ctxt-1.png"></p>
+<p><img src="images%5Ctxt-2png.png"></p>
+<h3 id="www-hubiao-homework-com-test-jpg"><a href="#www-hubiao-homework-com-test-jpg" class="headerlink" title="www.hubiao-homework.com/test.jpg"></a><a target="_blank" rel="noopener" href="http://www.hubiao-homework.com/test.jpg">www.hubiao-homework.com/test.jpg</a></h3><p><img src="images%5Cjpg-1.png"></p>
+<p><img src="images%5Cjpg-2.png"></p>
+<h2 id="7-关闭源站"><a href="#7-关闭源站" class="headerlink" title="7.关闭源站"></a>7.关闭源站</h2><p><img src="images%5Cstop-1.png"></p>
+<p><img src="images%5Cstop-2.png"></p>
+<h2 id="8-curl-测试"><a href="#8-curl-测试" class="headerlink" title="8.curl 测试"></a>8.curl 测试</h2><h3 id="curl-192-168-8-2-I"><a href="#curl-192-168-8-2-I" class="headerlink" title="curl  192.168.8.2  -I"></a>curl  192.168.8.2  -I</h3><p>curl  192.168.8.2/index.html  -I</p>
+<p><img src="images%5Ccurl-html.png"></p>
+<p>结论：html文件未被缓存</p>
+<h3 id="curl-192-168-8-2-test-jpg-I"><a href="#curl-192-168-8-2-test-jpg-I" class="headerlink" title="curl  192.168.8.2/test.jpg  -I"></a>curl  192.168.8.2/test.jpg  -I</h3><p><img src="images%5Ccurl-jpg.png"></p>
+<p>结论：jpg文件未被缓存</p>
+<h3 id="curl-192-168-8-2-test-txt-I"><a href="#curl-192-168-8-2-test-txt-I" class="headerlink" title="curl  192.168.8.2/test.txt  -I"></a>curl  192.168.8.2/test.txt  -I</h3><p><img src="images%5Ccurl-txt.png"></p>
+<p>结论：txt文件被缓存</p>
+<h2 id="9-总结"><a href="#9-总结" class="headerlink" title="9.总结"></a>9.总结</h2><p>本次实验是通过nginx+squid实现微型CDN服务，在这个过程中，源站采用nginx代理两个源站；squid用来作为源站缓存服务；最后用另一台服务器开启nginx服务来代理squid服务器，实现微型CDN服务的搭建。</p>
+<p>实验步骤一般可以先实现源站搭建—-&gt;squid服务搭建—–&gt;squid服务代理源站—–&gt;nginx代理服务搭建—–&gt;nginx代理squid服务器；最后通过访问nginx代理服务器，实现对源站的访问，如果关闭源站，可以对squid服务器缓存的资源进行访问，如果没有，则访问失败。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/08/02/%E8%83%A1%E6%A0%87-07-24/" data-id="ckdd1i94t0001nkuh0pjjd4fv" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/08/02/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/08/02/%E8%83%A1%E6%A0%87-07-24/">Nginx+Squid 实现微型CDN</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/02/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
