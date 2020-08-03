@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="游戏排行数据库设计一、题目要求：游戏积分排名 需要实现精确排名 写出数据表的定义 提供主要的业务SQL  二、实践目的： 了解sql操作； 学会sql索引； 明白sql高级用法。  三、实践内容： 创建数据库  1create database aboutGame;   创建数据表  game_integral表创建 123456789create table game_integral (">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2020/08/03/%E6%B8%B8%E6%88%8F%E6%8E%92%E8%A1%8C%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="游戏排行数据库设计一、题目要求：游戏积分排名 需要实现精确排名 写出数据表的定义 提供主要的业务SQL  二、实践目的： 了解sql操作； 学会sql索引； 明白sql高级用法。  三、实践内容： 创建数据库  1create database aboutGame;   创建数据表  game_integral表创建 123456789create table game_integral (">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/aide-cloud/cdn/images/1596346325738.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/aide-cloud/cdn/images/1596357880218.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/aide-cloud/cdn/images/1596357815580.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/aide-cloud/cdn/images/1596359632978.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/aide-cloud/cdn/images/1596359920577.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/aide-cloud/cdn/images/1596359936767.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/aide-cloud/cdn/images/1596360044195.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/aide-cloud/cdn/images/1596360057461.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/aide-cloud/cdn/images/1596360070050.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/aide-cloud/cdn/images/1596360231770.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/aide-cloud/cdn/images/1596360281148.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/aide-cloud/cdn/images/1596360450457.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/aide-cloud/cdn/images/1596360470616.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/aide-cloud/cdn/images/1596360506043.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/aide-cloud/cdn/images/1596360531418.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/aide-cloud/cdn/images/1596360540300.png">
+<meta property="article:published_time" content="2020-08-03T01:23:47.340Z">
+<meta property="article:modified_time" content="2020-08-03T01:26:13.081Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/aide-cloud/cdn/images/1596346325738.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-游戏排行数据库设计" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/03/%E6%B8%B8%E6%88%8F%E6%8E%92%E8%A1%8C%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/" class="article-date">
+  <time datetime="2020-08-03T01:23:47.340Z" itemprop="datePublished">2020-08-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="游戏排行数据库设计"><a href="#游戏排行数据库设计" class="headerlink" title="游戏排行数据库设计"></a>游戏排行数据库设计</h1><h2 id="一、题目要求："><a href="#一、题目要求：" class="headerlink" title="一、题目要求："></a>一、题目要求：</h2><h3 id="游戏积分排名"><a href="#游戏积分排名" class="headerlink" title="游戏积分排名"></a>游戏积分排名</h3><ul>
+<li>需要实现精确排名</li>
+<li>写出数据表的定义</li>
+<li>提供主要的业务SQL</li>
+</ul>
+<h2 id="二、实践目的："><a href="#二、实践目的：" class="headerlink" title="二、实践目的："></a>二、实践目的：</h2><ul>
+<li>了解sql操作；</li>
+<li>学会sql索引；</li>
+<li>明白sql高级用法。</li>
+</ul>
+<h2 id="三、实践内容："><a href="#三、实践内容：" class="headerlink" title="三、实践内容："></a>三、实践内容：</h2><ul>
+<li>创建数据库</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">database</span> aboutGame;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>创建数据表</li>
+</ul>
+<p>game_integral表创建</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> game_integral (</span><br><span class="line">    <span class="keyword">id</span> <span class="built_in">int</span>(<span class="number">10</span>) <span class="keyword">unsigned</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> AUTO_INCREMENT,</span><br><span class="line">    user_id <span class="built_in">int</span>(<span class="number">10</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="number">0</span> <span class="keyword">COMMENT</span> <span class="string">&#x27;用户id&#x27;</span>,</span><br><span class="line">    integral <span class="built_in">int</span>(<span class="number">10</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="number">0</span> <span class="keyword">COMMENT</span> <span class="string">&#x27;积分&#x27;</span>,</span><br><span class="line">    range_id <span class="built_in">int</span>(<span class="number">10</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="number">0</span> <span class="keyword">COMMENT</span> <span class="string">&#x27;积分段ID&#x27;</span>,</span><br><span class="line">    PRIMARY <span class="keyword">KEY</span> (<span class="keyword">id</span>),</span><br><span class="line">    <span class="keyword">KEY</span> IDX_USER_ID (user_id),</span><br><span class="line">    <span class="keyword">KEY</span> IDX_RANGE_ID (range_id)</span><br><span class="line">)<span class="keyword">ENGINE</span>=<span class="keyword">InnoDB</span> <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span>=utf8;</span><br></pre></td></tr></table></figure>
+
+<p>game_integral_range表创建</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> game_integral_range (</span><br><span class="line">    <span class="keyword">id</span> <span class="built_in">int</span>(<span class="number">10</span>) <span class="keyword">unsigned</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> AUTO_INCREMENT,</span><br><span class="line">    integral_start <span class="built_in">int</span>(<span class="number">10</span>) <span class="keyword">unsigned</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="number">0</span> <span class="keyword">COMMENT</span> <span class="string">&#x27;积分开始（含）&#x27;</span>,</span><br><span class="line">    integral_end <span class="built_in">int</span>(<span class="number">10</span>) <span class="keyword">unsigned</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="number">0</span> <span class="keyword">COMMENT</span> <span class="string">&#x27;积分结束（不含）&#x27;</span>,</span><br><span class="line">    total <span class="built_in">int</span>(<span class="number">10</span>) <span class="keyword">unsigned</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="number">0</span> <span class="keyword">COMMENT</span> <span class="string">&#x27;积分用户&#x27;</span>,</span><br><span class="line">    PRIMARY <span class="keyword">KEY</span> (<span class="keyword">id</span>),</span><br><span class="line">    <span class="keyword">KEY</span> IDX_INTEGRAL (integral_start)</span><br><span class="line">)<span class="keyword">ENGINE</span>=<span class="keyword">InnoDB</span> <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span>=utf8;</span><br></pre></td></tr></table></figure>
+
+<p>创建结果</p>
+<p><img src="https://cdn.jsdelivr.net/gh/aide-cloud/cdn/images/1596346325738.png" alt="1596346325738"></p>
+<p>插入百万数据结果</p>
+<p><img src="https://cdn.jsdelivr.net/gh/aide-cloud/cdn/images/1596357880218.png" alt="1596357880218"></p>
+<p>执行查询</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#示例</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">sum</span>(total) <span class="keyword">FROM</span> game_integral_range <span class="keyword">where</span> integral_start &gt;= &#123;integral&#125;;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#实践</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">count</span>(<span class="keyword">id</span>) <span class="keyword">FROM</span> springboot.game_pm;         <span class="comment">#查询玩家总人数</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">count</span>(*) <span class="keyword">FROM</span> aboutgame.game_integral <span class="keyword">where</span> integral &gt; <span class="number">1000</span>;    <span class="comment">#查询玩家积分大于11415的总数</span></span><br></pre></td></tr></table></figure>
+
+<p>结果：通过查询大于玩家积分的人数+1确定玩家当前排名</p>
+<p><img src="https://cdn.jsdelivr.net/gh/aide-cloud/cdn/images/1596357815580.png" alt="1596357815580"></p>
+<p>按两千分为一个区间分段，统计每个区间的人数之和，每个分段对应一个分段id</p>
+<p><img src="https://cdn.jsdelivr.net/gh/aide-cloud/cdn/images/1596359632978.png" alt="1596359632978"></p>
+<h3 id="利用索引查询："><a href="#利用索引查询：" class="headerlink" title="利用索引查询："></a>利用索引查询：</h3><p>1）查询第一分段的人数</p>
+<p><img src="https://cdn.jsdelivr.net/gh/aide-cloud/cdn/images/1596359920577.png" alt="1596359920577"></p>
+<p>2）查询第二分段的人数</p>
+<p><img src="https://cdn.jsdelivr.net/gh/aide-cloud/cdn/images/1596359936767.png" alt="1596359936767"></p>
+<p>2）查询第三分段的人数</p>
+<p><img src="https://cdn.jsdelivr.net/gh/aide-cloud/cdn/images/1596360044195.png" alt="1596360044195"></p>
+<p>2）查询第四分段的人数</p>
+<p><img src="https://cdn.jsdelivr.net/gh/aide-cloud/cdn/images/1596360057461.png" alt="1596360057461"></p>
+<p>2）查询第五分段的人数</p>
+<p><img src="https://cdn.jsdelivr.net/gh/aide-cloud/cdn/images/1596360070050.png" alt="1596360070050"></p>
+<h4 id="查询过程"><a href="#查询过程" class="headerlink" title="查询过程"></a>查询过程</h4><p><img src="https://cdn.jsdelivr.net/gh/aide-cloud/cdn/images/1596360231770.png" alt="1596360231770"></p>
+<h4 id="结果："><a href="#结果：" class="headerlink" title="结果："></a>结果：</h4><p>查询速度平均在0.125s左右，数据量为4061527条。</p>
+<h3 id="利用普通查询："><a href="#利用普通查询：" class="headerlink" title="利用普通查询："></a>利用普通查询：</h3><p>2）查询7999分数以上的人数</p>
+<p><img src="https://cdn.jsdelivr.net/gh/aide-cloud/cdn/images/1596360281148.png" alt="1596360281148"></p>
+<p>2）查询5999分数以上且8000以下的人数</p>
+<p><img src="https://cdn.jsdelivr.net/gh/aide-cloud/cdn/images/1596360450457.png" alt="1596360450457"></p>
+<p>2）查询3999分数以上且6000以下的人数</p>
+<p><img src="https://cdn.jsdelivr.net/gh/aide-cloud/cdn/images/1596360470616.png" alt="1596360470616"></p>
+<p>2）查询1999分数以上且4000以下的人数</p>
+<p><img src="https://cdn.jsdelivr.net/gh/aide-cloud/cdn/images/1596360506043.png" alt="1596360506043"></p>
+<p>2）查询1999分数以下的人数</p>
+<p><img src="https://cdn.jsdelivr.net/gh/aide-cloud/cdn/images/1596360531418.png" alt="1596360531418"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/aide-cloud/cdn/images/1596360540300.png" alt="1596360540300"></p>
+<h4 id="结果：-1"><a href="#结果：-1" class="headerlink" title="结果："></a>结果：</h4><p>数据量不变，平均时间在1s左右。</p>
+<h2 id="四、结论"><a href="#四、结论" class="headerlink" title="四、结论"></a>四、结论</h2><p>通过两种查询方式的对比，利用索引可以提高查询效率，当数据量巨大时，效果十分明显！</p>
+<p>我们可以把这种优化方式应用到以后的数据库设计中，当数据量庞大，且需要做高效率操作的时候，我们就可以利用这种类型的方式方法来设计我们的数据库，提高数据库查询效率，减少应用的响应时间，提高用户体验。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/08/03/%E6%B8%B8%E6%88%8F%E6%8E%92%E8%A1%8C%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/" data-id="ckddu6ek5000090uhh4il0fxk" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/08/02/%E8%83%A1%E6%A0%87-07-24/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Nginx+Squid 实现微型CDN</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/08/03/%E6%B8%B8%E6%88%8F%E6%8E%92%E8%A1%8C%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/02/%E8%83%A1%E6%A0%87-07-24/">Nginx+Squid 实现微型CDN</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
