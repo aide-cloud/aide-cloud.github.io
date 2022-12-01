@@ -7,7 +7,7 @@ export default defineUserConfig({
   locales: {
     '/': {
       lang: 'zh-CN',
-      title: '博客演示',
+      title: '梧桐',
       description: 'vuepress-theme-hope 的博客演示',
     },
   },
@@ -15,4 +15,6 @@ export default defineUserConfig({
   theme,
 
   shouldPrefetch: false,
+
+  head: [['link', { rel: 'icon', href: '/logo.svg' }]],
 })

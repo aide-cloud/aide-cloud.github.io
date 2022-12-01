@@ -5,24 +5,14 @@ export const pagesData = {
   "v-184f4da6": () => import(/* webpackChunkName: "v-184f4da6" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/intro.html.js").then(({ data }) => data),
   // path: /slides.html
   "v-2e3eac9e": () => import(/* webpackChunkName: "v-2e3eac9e" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/slides.html.js").then(({ data }) => data),
-  // path: /demo/
-  "v-1473bf53": () => import(/* webpackChunkName: "v-1473bf53" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/demo/index.html.js").then(({ data }) => data),
-  // path: /demo/disable.html
-  "v-4e65ec78": () => import(/* webpackChunkName: "v-4e65ec78" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/demo/disable.html.js").then(({ data }) => data),
-  // path: /demo/encrypt.html
-  "v-c151bf32": () => import(/* webpackChunkName: "v-c151bf32" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/demo/encrypt.html.js").then(({ data }) => data),
-  // path: /demo/markdown.html
-  "v-438ffe52": () => import(/* webpackChunkName: "v-438ffe52" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/demo/markdown.html.js").then(({ data }) => data),
-  // path: /demo/page.html
-  "v-6e19edb7": () => import(/* webpackChunkName: "v-6e19edb7" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/demo/page.html.js").then(({ data }) => data),
-  // path: /posts/cherry.html
-  "v-2bc6566a": () => import(/* webpackChunkName: "v-2bc6566a" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/posts/cherry.html.js").then(({ data }) => data),
-  // path: /posts/dragonfruit.html
-  "v-24b7c48d": () => import(/* webpackChunkName: "v-24b7c48d" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/posts/dragonfruit.html.js").then(({ data }) => data),
-  // path: /posts/strawberry.html
-  "v-f0ec4556": () => import(/* webpackChunkName: "v-f0ec4556" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/posts/strawberry.html.js").then(({ data }) => data),
-  // path: /posts/tomato.html
-  "v-df8b6e0c": () => import(/* webpackChunkName: "v-df8b6e0c" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/posts/tomato.html.js").then(({ data }) => data),
+  // path: /coding/
+  "v-bbaa4628": () => import(/* webpackChunkName: "v-bbaa4628" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/coding/index.html.js").then(({ data }) => data),
+  // path: /coding/go/
+  "v-cbf7084a": () => import(/* webpackChunkName: "v-cbf7084a" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/coding/go/index.html.js").then(({ data }) => data),
+  // path: /coding/java/
+  "v-2af9f0e1": () => import(/* webpackChunkName: "v-2af9f0e1" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/coding/java/index.html.js").then(({ data }) => data),
+  // path: /coding/python/
+  "v-8afa2732": () => import(/* webpackChunkName: "v-8afa2732" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/coding/python/index.html.js").then(({ data }) => data),
   // path: /posts/apple/1.html
   "v-67b8c712": () => import(/* webpackChunkName: "v-67b8c712" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/posts/apple/1.html.js").then(({ data }) => data),
   // path: /posts/apple/2.html
@@ -39,6 +29,36 @@ export const pagesData = {
   "v-7d70f19b": () => import(/* webpackChunkName: "v-7d70f19b" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/posts/banana/3.html.js").then(({ data }) => data),
   // path: /posts/banana/4.html
   "v-7f25ca3a": () => import(/* webpackChunkName: "v-7f25ca3a" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/posts/banana/4.html.js").then(({ data }) => data),
+  // path: /coding/go/base/1.html
+  "v-450cdcea": () => import(/* webpackChunkName: "v-450cdcea" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/coding/go/base/1.html.js").then(({ data }) => data),
+  // path: /coding/go/base/2.html
+  "v-41a32bac": () => import(/* webpackChunkName: "v-41a32bac" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/coding/go/base/2.html.js").then(({ data }) => data),
+  // path: /coding/go/base/3.html
+  "v-3e397a6e": () => import(/* webpackChunkName: "v-3e397a6e" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/coding/go/base/3.html.js").then(({ data }) => data),
+  // path: /coding/go/base/4.html
+  "v-3acfc930": () => import(/* webpackChunkName: "v-3acfc930" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/coding/go/base/4.html.js").then(({ data }) => data),
+  // path: /coding/go/base/
+  "v-67d88883": () => import(/* webpackChunkName: "v-67d88883" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/coding/go/base/index.html.js").then(({ data }) => data),
+  // path: /coding/java/base/1.html
+  "v-1fba4676": () => import(/* webpackChunkName: "v-1fba4676" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/coding/java/base/1.html.js").then(({ data }) => data),
+  // path: /coding/java/base/2.html
+  "v-1c509538": () => import(/* webpackChunkName: "v-1c509538" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/coding/java/base/2.html.js").then(({ data }) => data),
+  // path: /coding/java/base/3.html
+  "v-18e6e3fa": () => import(/* webpackChunkName: "v-18e6e3fa" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/coding/java/base/3.html.js").then(({ data }) => data),
+  // path: /coding/java/base/4.html
+  "v-157d32bc": () => import(/* webpackChunkName: "v-157d32bc" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/coding/java/base/4.html.js").then(({ data }) => data),
+  // path: /coding/java/base/
+  "v-4d7d7186": () => import(/* webpackChunkName: "v-4d7d7186" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/coding/java/base/index.html.js").then(({ data }) => data),
+  // path: /coding/python/base/1.html
+  "v-0fbb917f": () => import(/* webpackChunkName: "v-0fbb917f" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/coding/python/base/1.html.js").then(({ data }) => data),
+  // path: /coding/python/base/2.html
+  "v-11706a1e": () => import(/* webpackChunkName: "v-11706a1e" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/coding/python/base/2.html.js").then(({ data }) => data),
+  // path: /coding/python/base/3.html
+  "v-132542bd": () => import(/* webpackChunkName: "v-132542bd" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/coding/python/base/3.html.js").then(({ data }) => data),
+  // path: /coding/python/base/4.html
+  "v-14da1b5c": () => import(/* webpackChunkName: "v-14da1b5c" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/coding/python/base/4.html.js").then(({ data }) => data),
+  // path: /coding/python/base/
+  "v-1872e112": () => import(/* webpackChunkName: "v-1872e112" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/coding/python/base/index.html.js").then(({ data }) => data),
   // path: /404.html
   "v-3706649a": () => import(/* webpackChunkName: "v-3706649a" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/404.html.js").then(({ data }) => data),
   // path: /category/
@@ -57,38 +77,18 @@ export const pagesData = {
   "v-01560935": () => import(/* webpackChunkName: "v-01560935" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/timeline/index.html.js").then(({ data }) => data),
   // path: /category/%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/
   "v-03d57386": () => import(/* webpackChunkName: "v-03d57386" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/category/使用指南/index.html.js").then(({ data }) => data),
-  // path: /tag/%E7%A6%81%E7%94%A8/
-  "v-83e1f92e": () => import(/* webpackChunkName: "v-83e1f92e" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/tag/禁用/index.html.js").then(({ data }) => data),
-  // path: /category/%E6%A8%B1%E6%A1%83/
-  "v-0c75a0f8": () => import(/* webpackChunkName: "v-0c75a0f8" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/category/樱桃/index.html.js").then(({ data }) => data),
-  // path: /tag/%E6%96%87%E7%AB%A0%E5%8A%A0%E5%AF%86/
-  "v-1e447d61": () => import(/* webpackChunkName: "v-1e447d61" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/tag/文章加密/index.html.js").then(({ data }) => data),
-  // path: /category/%E7%81%AB%E9%BE%99%E6%9E%9C/
-  "v-226a68ec": () => import(/* webpackChunkName: "v-226a68ec" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/category/火龙果/index.html.js").then(({ data }) => data),
-  // path: /tag/markdown/
-  "v-484552dc": () => import(/* webpackChunkName: "v-484552dc" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/tag/markdown/index.html.js").then(({ data }) => data),
-  // path: /category/%E6%B0%B4%E6%9E%9C/
-  "v-12590846": () => import(/* webpackChunkName: "v-12590846" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/category/水果/index.html.js").then(({ data }) => data),
-  // path: /tag/%E9%A1%B5%E9%9D%A2%E9%85%8D%E7%BD%AE/
-  "v-a378ad66": () => import(/* webpackChunkName: "v-a378ad66" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/tag/页面配置/index.html.js").then(({ data }) => data),
-  // path: /category/%E8%8D%89%E8%8E%93/
-  "v-247d58ff": () => import(/* webpackChunkName: "v-247d58ff" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/category/草莓/index.html.js").then(({ data }) => data),
-  // path: /tag/%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/
-  "v-7b167472": () => import(/* webpackChunkName: "v-7b167472" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/tag/使用指南/index.html.js").then(({ data }) => data),
-  // path: /category/%E8%94%AC%E8%8F%9C/
-  "v-76b80ea2": () => import(/* webpackChunkName: "v-76b80ea2" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/category/蔬菜/index.html.js").then(({ data }) => data),
   // path: /tag/%E7%BA%A2/
   "v-0f1d0e94": () => import(/* webpackChunkName: "v-0f1d0e94" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/tag/红/index.html.js").then(({ data }) => data),
   // path: /category/%E8%8B%B9%E6%9E%9C/
   "v-40b68770": () => import(/* webpackChunkName: "v-40b68770" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/category/苹果/index.html.js").then(({ data }) => data),
-  // path: /tag/%E5%B0%8F/
-  "v-3e6b05e8": () => import(/* webpackChunkName: "v-3e6b05e8" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/tag/小/index.html.js").then(({ data }) => data),
-  // path: /category/%E9%A6%99%E8%95%89/
-  "v-4c41ef7e": () => import(/* webpackChunkName: "v-4c41ef7e" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/category/香蕉/index.html.js").then(({ data }) => data),
-  // path: /tag/%E5%9C%86/
-  "v-301b24f4": () => import(/* webpackChunkName: "v-301b24f4" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/tag/圆/index.html.js").then(({ data }) => data),
   // path: /tag/%E5%A4%A7/
   "v-3ceeab45": () => import(/* webpackChunkName: "v-3ceeab45" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/tag/大/index.html.js").then(({ data }) => data),
+  // path: /category/%E6%B0%B4%E6%9E%9C/
+  "v-12590846": () => import(/* webpackChunkName: "v-12590846" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/category/水果/index.html.js").then(({ data }) => data),
+  // path: /tag/%E5%9C%86/
+  "v-301b24f4": () => import(/* webpackChunkName: "v-301b24f4" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/tag/圆/index.html.js").then(({ data }) => data),
+  // path: /category/%E9%A6%99%E8%95%89/
+  "v-4c41ef7e": () => import(/* webpackChunkName: "v-4c41ef7e" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/category/香蕉/index.html.js").then(({ data }) => data),
   // path: /tag/%E9%BB%84/
   "v-42254370": () => import(/* webpackChunkName: "v-42254370" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/tag/黄/index.html.js").then(({ data }) => data),
   // path: /tag/%E5%BC%AF%E6%9B%B2%E7%9A%84/
