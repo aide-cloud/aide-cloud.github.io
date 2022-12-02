@@ -23,6 +23,8 @@ export const pagesComponents = {
   "v-6b227850": defineAsyncComponent(() => import(/* webpackChunkName: "v-6b227850" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/posts/apple/3.html.vue")),
   // path: /posts/apple/4.html
   "v-6cd750ef": defineAsyncComponent(() => import(/* webpackChunkName: "v-6cd750ef" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/posts/apple/4.html.vue")),
+  // path: /posts/apple/
+  "v-08f42f4a": defineAsyncComponent(() => import(/* webpackChunkName: "v-08f42f4a" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/posts/apple/index.html.vue")),
   // path: /posts/banana/1.html
   "v-7a07405d": defineAsyncComponent(() => import(/* webpackChunkName: "v-7a07405d" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/posts/banana/1.html.vue")),
   // path: /posts/banana/2.html

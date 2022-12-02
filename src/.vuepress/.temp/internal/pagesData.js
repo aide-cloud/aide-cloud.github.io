@@ -21,6 +21,8 @@ export const pagesData = {
   "v-6b227850": () => import(/* webpackChunkName: "v-6b227850" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/posts/apple/3.html.js").then(({ data }) => data),
   // path: /posts/apple/4.html
   "v-6cd750ef": () => import(/* webpackChunkName: "v-6cd750ef" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/posts/apple/4.html.js").then(({ data }) => data),
+  // path: /posts/apple/
+  "v-08f42f4a": () => import(/* webpackChunkName: "v-08f42f4a" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/posts/apple/index.html.js").then(({ data }) => data),
   // path: /posts/banana/1.html
   "v-7a07405d": () => import(/* webpackChunkName: "v-7a07405d" */"/Users/hubiao/me/aide-cloud.github.io/src/.vuepress/.temp/pages/posts/banana/1.html.js").then(({ data }) => data),
   // path: /posts/banana/2.html
