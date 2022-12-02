@@ -6,7 +6,7 @@ export default hopeTheme({
   hostname: 'https://aide-cloud.github.io',
 
   author: {
-    name: 'Biao.HU',
+    name: 'Biao.Hu',
     url: 'https://github.com/aide-cloud',
   },
 
