@@ -3,7 +3,7 @@ import { zhNavbar } from './navbar'
 import { zhSidebar } from './sidebar'
 
 export default hopeTheme({
-  hostname: 'https://github.com/aide-cloud',
+  hostname: 'https://github.com/aide-cloud.github.io',
 
   author: {
     name: 'Biao.Hu',
