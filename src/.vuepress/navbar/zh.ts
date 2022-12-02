@@ -8,8 +8,8 @@ export const zhNavbar = navbar([
         link: '/coding/',
         prefix: '/coding/',
         children: [
-            {text: 'Java', link: 'java/', icon: 'java'},
             {text: 'Golang', link: 'go/', icon: 'Goyuyan'},
+            {text: 'Java', link: 'java/', icon: 'java'},
             {text: 'Python', link: 'python/', icon: 'python'},
         ],
     },
