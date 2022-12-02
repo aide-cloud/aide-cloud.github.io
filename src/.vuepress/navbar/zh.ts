@@ -4,42 +4,32 @@ export const zhNavbar = navbar([
   '/',
   { text: '编码笔记', icon: 'discover', link: '/coding/' },
   {
-    text: '博文',
+    text: '项目工程',
     icon: 'edit',
-    prefix: '/posts/',
+    prefix: '/project/',
     children: [
       {
-        text: '苹果',
+        text: 'Go项目',
         icon: 'edit',
-        prefix: 'apple/',
+        prefix: 'go/',
         children: [
-          { text: '苹果1', icon: 'edit', link: '1' },
-          { text: '苹果2', icon: 'edit', link: '2' },
-          '3',
-          '4',
+          { text: 'Gin框架', icon: 'edit', link: 'gin_new' },
+          'kratos_new',
+          // { text: 'Kratos框架', icon: 'edit', link: 'kratos_new' },
         ],
       },
       {
-        text: '香蕉',
+        text: 'Java项目',
         icon: 'edit',
-        prefix: 'banana/',
+        prefix: 'java/',
         children: [
           {
-            text: '香蕉 1',
+            text: 'SpringBoot项目',
             icon: 'edit',
             link: '1',
           },
-          {
-            text: '香蕉 2',
-            icon: 'edit',
-            link: '2',
-          },
-          '3',
-          '4',
         ],
       },
-      { text: '樱桃', icon: 'edit', link: 'cherry' },
-      { text: '火龙果', icon: 'edit', link: 'dragonfruit' },
     ],
   },
 ])

@@ -1,5 +1,5 @@
 ---
-title: 苹果
+title: Go项目
 index: false
 icon: discover
 category:
