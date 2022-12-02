@@ -1,5 +1,5 @@
 ---
-title: Gin
+title: Gin框架
 index: false
 # icon: discover
 category:

@@ -1,7 +1,7 @@
 ---
-title: Go语言
+title: Go项目
 index: false
-# icon: 
+# icon: discover
 category:
   - 使用指南
 ---
