@@ -2,4 +2,4 @@
 User-agent:*
 Disallow:
 
-Sitemap: https://github.com/aide-cloud/sitemap.xml
+Sitemap: https://github.com/aide-cloud.github.io/sitemap.xml
