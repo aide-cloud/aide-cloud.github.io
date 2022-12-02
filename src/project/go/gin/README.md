@@ -1,7 +1,7 @@
 ---
-title: Java项目
+title: Gin
 index: false
-icon: discover
+# icon: discover
 category:
   - 使用指南
 ---

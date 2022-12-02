@@ -4,14 +4,14 @@ export const zhSidebar = sidebar({
   '/project/': [
     {
       text: 'Go项目',
-      icon: 'creative',
+      icon: 'hot',
       prefix: 'go/',
       // link: 'go/',
       children: 'structure',
     },
     {
       text: 'Java项目',
-      icon: 'note',
+      icon: 'java',
       prefix: 'java/',
       // link: 'java/',
       children: 'structure',
@@ -27,7 +27,7 @@ export const zhSidebar = sidebar({
     },
     {
       text: 'Golang',
-      icon: 'golang',
+      icon: 'hot',
       prefix: 'go/',
       // link: 'go/',
       children: 'structure',
@@ -36,7 +36,7 @@ export const zhSidebar = sidebar({
       text: 'Python',
       icon: 'python',
       prefix: 'python/',
-      link: 'python/',
+      // link: 'python/',
       children: 'structure',
     },
   ],
