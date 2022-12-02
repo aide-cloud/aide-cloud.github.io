@@ -1,9 +1,18 @@
 ---
 title: Hello World
 index: false
-icon: discover
+icon: coding
 category:
-  - 使用指南
+  - 入门
+tag:
+  - hello world
+  - go
+  - java
+  - python
+  - c++
+  - c
+  - php
+  - ruby
 ---
 ::: tabs#fruit
 
