@@ -53,5 +53,15 @@ export const zhNavbar = navbar([
             {text: 'Redis',icon: 'redis',link: 'redis/'},
             {text: 'MQ',icon: 'MQ',link: 'mq/'},
         ],
+    },
+    {
+        text: '数据结构与算法',
+        icon: 'lujing',
+        prefix: '/struct/',
+        link: '/struct/',
+        children: [
+            {text: '数据结构', icon: 'shujujiegou-01', link: 'struct/'},
+            {text: '算法', icon: 'jichengsuanfa', link: 'algorithm/'},
+        ],
     }
 ])

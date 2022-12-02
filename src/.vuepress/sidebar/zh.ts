@@ -24,4 +24,8 @@ export const zhSidebar = sidebar({
         {text: 'Redis', icon: 'redis', prefix: 'redis/', link: 'redis/', children: 'structure',},
         {text: 'MQ', icon: 'MQ', prefix: 'mq/', link: 'mq/', children: 'structure',},
     ],
+    '/struct/': [
+        {text: '数据结构', icon: 'shujujiegou-01', prefix: 'struct/', link: 'struct/', children: 'structure',},
+        {text: '算法', icon: 'jichengsuanfa', prefix: 'algorithm/', link: 'algorithm/', children: 'structure',},
+    ],
 })
