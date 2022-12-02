@@ -1,7 +1,7 @@
 ---
 title: Docker
 index: false
-icon: launch
+icon: docker
 category:
   - docker
 ---

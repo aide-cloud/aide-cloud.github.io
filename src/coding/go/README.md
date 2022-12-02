@@ -1,7 +1,7 @@
 ---
 title: Go语言
 index: false
-# icon: 
+icon: Goyuyan
 category:
   - go
 ---

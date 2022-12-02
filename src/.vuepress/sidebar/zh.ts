@@ -20,7 +20,7 @@ export const zhSidebar = sidebar({
     '/coding/': [
         {
             text: 'Golang',
-            icon: 'hot',
+            icon: 'Goyuyan',
             prefix: 'go/',
             link: 'go/',
             children: 'structure',

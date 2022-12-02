@@ -8,7 +8,7 @@ export const zhNavbar = navbar([
         link: '/coding/',
         children: [
             {text: 'Java', link: '/coding/java/', icon: 'java'},
-            {text: 'Golang', link: '/coding/go/', icon: 'hot'},
+            {text: 'Golang', link: '/coding/go/', icon: 'Goyuyan'},
         ],
     },
     {
@@ -16,7 +16,7 @@ export const zhNavbar = navbar([
         icon: 'code',
         prefix: '/frontend/',
         children: [
-            {text: 'Vue', icon: 'vue', link: 'vue/'},
+            {text: 'Vue', icon: 'Vue', link: 'vue/'},
             {text: 'React', icon: 'react', link: 'react/'},
         ],
     },
@@ -31,7 +31,7 @@ export const zhNavbar = navbar([
     },
     {
         text: '容器',
-        icon: 'docker',
+        icon: 'rongqi',
         prefix: '/container/',
         link: '/container/',
         children: [
