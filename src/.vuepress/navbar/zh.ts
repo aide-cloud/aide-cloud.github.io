@@ -15,8 +15,7 @@ export const zhNavbar = navbar([
         prefix: 'go/',
         children: [
           { text: 'Gin框架', icon: '', link: 'gin', prefix: 'gin/' },
-          'kratos',
-          // { text: 'Kratos框架', icon: 'edit', link: 'kratos_new' },
+          { text: 'Kratos框架', icon: '', link: 'kratos/' },
         ],
       },
     ],
