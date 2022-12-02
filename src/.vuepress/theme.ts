@@ -1,9 +1,9 @@
 import { hopeTheme } from 'vuepress-theme-hope'
-import { zhNavbar } from './navbar/index.js'
-import { zhSidebar } from './sidebar/index.js'
+import { zhNavbar } from './navbar'
+import { zhSidebar } from './sidebar'
 
 export default hopeTheme({
-  hostname: 'https://aide-cloud.github.io',
+  hostname: 'https://github.com/aide-cloud',
 
   author: {
     name: 'Biao.Hu',
@@ -11,11 +11,10 @@ export default hopeTheme({
   },
 
   iconAssets: 'iconfont',
-  // iconPrefix: 'icon-',
 
-  logo: '/logo.svg',
+  logo: '/head.jpeg',
 
-  repo: 'aide-cloud/aide-cloud.github.io',
+  repo: 'https://github.com/aide-cloud',
 
   docsDir: 'docs',
 
@@ -125,61 +124,6 @@ export default hopeTheme({
       cacheHTML: true,
       cachePic: true,
       appendBase: true,
-      apple: {
-        icon: '/assets/icon/apple-icon-152.png',
-        statusBarColor: 'black',
-      },
-      msTile: {
-        image: '/assets/icon/ms-icon-144.png',
-        color: '#ffffff',
-      },
-      manifest: {
-        icons: [
-          {
-            src: '/assets/icon/chrome-mask-512.png',
-            sizes: '512x512',
-            purpose: 'maskable',
-            type: 'image/png',
-          },
-          {
-            src: '/assets/icon/chrome-mask-192.png',
-            sizes: '192x192',
-            purpose: 'maskable',
-            type: 'image/png',
-          },
-          {
-            src: '/assets/icon/chrome-512.png',
-            sizes: '512x512',
-            type: 'image/png',
-          },
-          {
-            src: '/assets/icon/chrome-192.png',
-            sizes: '192x192',
-            type: 'image/png',
-          },
-        ],
-        shortcuts: [
-          {
-            name: 'Demo',
-            short_name: 'Demo',
-            url: '/demo/',
-            icons: [
-              {
-                src: '/assets/icon/guide-maskable.png',
-                sizes: '192x192',
-                purpose: 'maskable',
-                type: 'image/png',
-              },
-              {
-                src: '/assets/icon/guide-monochrome.png',
-                sizes: '192x192',
-                purpose: 'monochrome',
-                type: 'image/png',
-              },
-            ],
-          },
-        ],
-      },
     },
   },
 })

@@ -16,5 +16,5 @@ export default defineUserConfig({
 
   shouldPrefetch: false,
 
-  head: [['link', { rel: 'icon', href: '/logo.svg' }]],
+  head: [['link', { rel: 'icon', href: '/favicon.ico' }]],
 })
