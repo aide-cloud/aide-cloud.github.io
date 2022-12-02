@@ -1,7 +1,7 @@
 ---
 title: Go语言基础
 index: false
-# icon: discover
+icon: jichu
 category:
   - 使用指南
 ---

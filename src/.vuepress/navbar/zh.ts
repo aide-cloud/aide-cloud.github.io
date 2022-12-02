@@ -6,9 +6,11 @@ export const zhNavbar = navbar([
         text: '后端笔记',
         icon: 'debug',
         link: '/coding/',
+        prefix: '/coding/',
         children: [
-            {text: 'Java', link: '/coding/java/', icon: 'java'},
-            {text: 'Golang', link: '/coding/go/', icon: 'Goyuyan'},
+            {text: 'Java', link: 'java/', icon: 'java'},
+            {text: 'Golang', link: 'go/', icon: 'Goyuyan'},
+            {text: 'Python', link: 'python/', icon: 'python'},
         ],
     },
     {
@@ -36,6 +38,20 @@ export const zhNavbar = navbar([
         link: '/container/',
         children: [
             {text: 'Docker', icon: 'docker', link: 'docker/'},
+            {text: 'K8s', icon: 'kubernetes', link: 'k8s/'},
+        ],
+    },
+    {
+        text: '基础设施',
+        icon: 'jichusheshi',
+        prefix: '/infrastructure/',
+        link: '/infrastructure/',
+        children: [
+            {text: 'Linux',icon: 'linux',link: 'linux/'},
+            {text: 'Nginx',icon: 'nginx',link: 'nginx/'},
+            {text: 'Mysql',icon: 'MySQL',link: 'mysql/'},
+            {text: 'Redis',icon: 'redis',link: 'redis/'},
+            {text: 'MQ',icon: 'MQ',link: 'mq/'},
         ],
     }
 ])

@@ -10,7 +10,7 @@ export default hopeTheme({
     url: 'https://github.com/aide-cloud',
   },
 
-  iconAssets: '//at.alicdn.com/t/c/font_3803922_6a03d51knj4.css',
+  iconAssets: '//at.alicdn.com/t/c/font_3803922_wqy1qsz8c1o.css',
 
   logo: '/head.jpeg',
 
