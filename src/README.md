@@ -22,11 +22,11 @@ actions:
 
 features:
   - title: universal
-    icon: repo
+    icon: Goyuyan
     link: https://github.com/aide-cloud/universal
     details: 一个为大家提供go基础工具的基础库
   - title: family-fe-layout
-    icon: repo
+    icon: react
     link: https://github.com/aide-cloud/family-fe-layout
     details: 基于antd v5，vite的后台管理模板
 
