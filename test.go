@@ -1,22 +1,40 @@
 package main
 
-import (
-	"fmt"
-	"time"
-)
+import "fmt"
+
+type Person struct {
+	name string
+	age  int
+}
+
+type Student struct {
+	Person
+	school string
+}
 
 func main() {
-	var ch chan int
-	ch = make(chan int, 10)
-	for i := 0; i < 10; i++ {
-		ch <- i
+	s := Student{
+		Person: Person{
+			name: "张三",
+			age:  18,
+		},
+		school: "清华大学",
 	}
-	time.Sleep(time.Second)
-	fmt.Println(<-ch)
-	fmt.Println(<-ch)
-	close(ch)
-	fmt.Println(<-ch)
-	fmt.Println(<-ch)
-	ch <- 1
-	fmt.Println(<-ch)
+
+	p := Person{
+		name: "李四",
+		age:  20,
+	}
+
+	p.sayHello()
+
+	s.sayHello()
+}
+
+func (p Person) sayHello() {
+	fmt.Printf("Hello, my name is %s, I'm %d years old.\n", p.name, p.age)
+}
+
+func (s Student) sayHello() {
+	fmt.Printf("Hello, my name is %s, I'm %d years old. I'm a student of %s.\n", s.name, s.age, s.school)
 }
