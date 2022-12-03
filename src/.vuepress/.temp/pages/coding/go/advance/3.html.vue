@@ -1,8 +1,4 @@
-<template><div><h1 id="香蕉-3" tabindex="-1"><a class="header-anchor" href="#香蕉-3" aria-hidden="true">#</a> 香蕉 3</h1>
-<h2 id="标题-2" tabindex="-1"><a class="header-anchor" href="#标题-2" aria-hidden="true">#</a> 标题 2</h2>
-<p>这里是内容。</p>
-<h3 id="标题-3" tabindex="-1"><a class="header-anchor" href="#标题-3" aria-hidden="true">#</a> 标题 3</h3>
-<p>这里是内容。</p>
+<template><div><h1 id="_3-mqtt" tabindex="-1"><a class="header-anchor" href="#_3-mqtt" aria-hidden="true">#</a> 3. MQTT</h1>
 </div></template>
 
 
