@@ -7,34 +7,51 @@ type Person struct {
 	age  int
 }
 
-type Student struct {
-	Person
-	school string
+type Human interface {
+	// 唱
+	sing()
+	// 跳
+	jump()
+	// 打篮球
+	playBasketball()
+	// rap
+	rap()
+	// 自我介绍
+	introduce()
 }
 
 func main() {
-	s := Student{
-		Person: Person{
-			name: "张三",
-			age:  18,
-		},
-		school: "清华大学",
-	}
-
 	p := Person{
-		name: "李四",
-		age:  20,
+		name: "张三",
+		age:  18,
 	}
-
-	p.sayHello()
-
-	s.sayHello()
+	p.introduce()
+	p.sing()
+	p.jump()
+	p.playBasketball()
+	p.rap()
 }
 
 func (p Person) sayHello() {
-	fmt.Printf("Hello, my name is %s, I'm %d years old.\n", p.name, p.age)
+	fmt.Println("Hello, I'm", p.name)
 }
 
-func (s Student) sayHello() {
-	fmt.Printf("Hello, my name is %s, I'm %d years old. I'm a student of %s.\n", s.name, s.age, s.school)
+func (p Person) sing() {
+	fmt.Println("I can sing")
+}
+
+func (p Person) jump() {
+	fmt.Println("I can jump")
+}
+
+func (p Person) playBasketball() {
+	fmt.Println("I can play basketball")
+}
+
+func (p Person) rap() {
+	fmt.Println("I can rap")
+}
+
+func (p Person) introduce() {
+	fmt.Println("I'm", p.name, "I'm", p.age, "years old")
 }
