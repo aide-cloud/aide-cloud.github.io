@@ -2,28 +2,17 @@ package main
 
 import "fmt"
 
-type Person struct {
-	name string
-	age  int
-}
-
-func (p Person) String() string {
-	return fmt.Sprintf("name: %s, age: %d", p.name, p.age)
-}
-
-type Stringer interface {
-	String() string
-}
-
 func main() {
-	var s Stringer
-	s = Person{
-		name: "张三",
-		age:  18,
-	}
-
-	p, ok := s.(Person)
-	if ok {
-		fmt.Println(p) // {张三 18}
+	ch1 := make(chan int)
+	ch2 := make(chan int)
+	for {
+		select {
+		case <-ch1:
+			fmt.Println("A")
+		case ch2 <- 1:
+			fmt.Println("B")
+		default:
+			fmt.Println("C")
+		}
 	}
 }
