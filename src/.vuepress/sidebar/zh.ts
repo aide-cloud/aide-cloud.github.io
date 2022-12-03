@@ -18,20 +18,6 @@ export const zhSidebar = sidebar({
       link: 'go/',
       children: 'structure',
     },
-    {
-      text: 'Java',
-      icon: 'java',
-      prefix: 'java/',
-      link: 'java/',
-      children: 'structure',
-    },
-    {
-      text: 'Python',
-      icon: 'python',
-      prefix: 'python/',
-      link: 'python/',
-      children: 'structure',
-    },
   ],
   '/frontend/': [
     {
