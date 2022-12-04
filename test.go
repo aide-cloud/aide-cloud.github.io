@@ -1,12 +1,12 @@
 package main
 
 import (
-	"os"
+	"fmt"
+	"time"
 )
 
 func main() {
-	err := os.Remove("test.txt")
-	if err != nil {
-		panic(err)
-	}
+	t := time.Now()
+	fmt.Println(t.Add(time.Hour * 24))  // 加一天
+	fmt.Println(t.Add(time.Hour * -24)) // 减一天
 }
