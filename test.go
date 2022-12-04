@@ -2,11 +2,18 @@ package main
 
 import (
 	"fmt"
-	"time"
+)
+
+type MyError string
+
+func (e MyError) Error() string {
+	return string(e)
+}
+
+const (
+	ErrNotFound = MyError("not found")
 )
 
 func main() {
-	t := time.Now()
-	fmt.Println(t.Add(time.Hour * 24))  // 加一天
-	fmt.Println(t.Add(time.Hour * -24)) // 减一天
+	fmt.Println(ErrNotFound)
 }
