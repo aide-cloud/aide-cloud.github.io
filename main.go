@@ -3,12 +3,25 @@ package main
 
 import (
 	"fmt"
-	"sort"
 )
 
 func main() {
-	slice1 := []int{1, 2, 3, 4, 5}
+	var map1 map[string]int
+	map1 = make(map[string]int, 10)
+	map1["张三"] = 90
+	map1["李四"] = 100
+	fmt.Println(map1) // map[张三:90 李四:100]
 
-	index := sort.SearchInts(slice1, 3)
-	fmt.Println(index)
+	// 方式二
+	map2 := map[string]int{
+		"张三": 90,
+		"李四": 100,
+	}
+	fmt.Println(map2) // map[张三:90 李四:100]
+
+	// 方式三
+	map3 := make(map[string]int, 10)
+	map3["张三"] = 90
+	map3["李四"] = 100
+	fmt.Println(map3) // map[张三:90 李四:100]
 }
