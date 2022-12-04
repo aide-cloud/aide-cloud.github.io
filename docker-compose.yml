@@ -1,7 +1,9 @@
 version: '3.7'
 
 services:
-  hello-world:
-    image: nginx:latest
+  go:
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
-      - "18080:80"
+      - "8080:8080"
