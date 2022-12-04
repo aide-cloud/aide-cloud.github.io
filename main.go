@@ -3,13 +3,12 @@ package main
 
 import (
 	"fmt"
-	"net/http"
+	"sort"
 )
 
 func main() {
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintf(w, "Hello, %s!", r.URL.Path[1:])
-	})
-	fmt.Println("Listening on port 8080")
-	http.ListenAndServe(":8080", nil)
+	slice1 := []int{1, 2, 3, 4, 5}
+
+	index := sort.SearchInts(slice1, 3)
+	fmt.Println(index)
 }
