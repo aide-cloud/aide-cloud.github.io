@@ -1,4 +1,4 @@
-<template><div><Tabs id="0" :data='[{"title":"go","value":"go"},{"title":"java","value":"java"},{"title":"python","value":"python"},{"title":"ruby","value":"ruby"},{"title":"c","value":"C"},{"title":"c++","value":"C++"},{"title":"php","value":"php"}]' tab-id="fruit">
+<template><div><Tabs id="0" :data='[{"title":"go","value":"go"},{"title":"java","value":"java"},{"title":"python3","value":"python3"},{"title":"python2","value":"python2"},{"title":"c","value":"C"},{"title":"c++","value":"C++"},{"title":"php","value":"php"}]' tab-id="fruit">
 <template #tab0="{ title, value, isActive }">
 <div class="language-go line-numbers-mode" data-ext="go"><pre v-pre class="language-go"><code><span class="token keyword">package</span> main
 
@@ -19,7 +19,7 @@
 <div class="language-python line-numbers-mode" data-ext="py"><pre v-pre class="language-python"><code><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Hello, 世界"</span><span class="token punctuation">)</span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></template>
 <template #tab3="{ title, value, isActive }">
-<div class="language-ruby line-numbers-mode" data-ext="rb"><pre v-pre class="language-ruby"><code>puts <span class="token string-literal"><span class="token string">"Hello, 世界"</span></span>
+<div class="language-python line-numbers-mode" data-ext="py"><pre v-pre class="language-python"><code><span class="token keyword">print</span> <span class="token string">"Hello, 世界"</span>
 </code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></template>
 <template #tab4="{ title, value, isActive }">
 <div class="language-c line-numbers-mode" data-ext="c"><pre v-pre class="language-c"><code><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>

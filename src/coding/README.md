@@ -12,7 +12,6 @@ tag:
   - c++
   - c
   - php
-  - ruby
 ---
 ::: tabs#fruit
 
@@ -38,16 +37,16 @@ public class HelloWorld {
 }
 ```
 
-@tab python#python
+@tab python3#python3
 
 ```python
 print("Hello, 世界")
 ```
 
-@tab ruby#ruby
+@tab python2#python2
 
-```ruby
-puts "Hello, 世界"
+```python
+print "Hello, 世界"
 ```
 
 @tab c#C
