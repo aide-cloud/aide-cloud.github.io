@@ -23,7 +23,7 @@ export const zhNavbar = navbar([
     // children: [{ text: 'Go项目', icon: 'hot', link: 'go/' }],
   },
   {
-    text: '容器',
+    text: 'Devops',
     icon: 'rongqi',
     prefix: '/container/',
     link: '/container/',

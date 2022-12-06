@@ -1,27 +1,27 @@
-// main.go
 package main
 
 import (
-	"fmt"
+	"github.com/graph-gophers/graphql-go"
+	"log"
+	"net/http"
+
+	"github.com/graph-gophers/graphql-go/relay"
 )
 
-func main() {
-	var map1 map[string]int
-	map1 = make(map[string]int, 10)
-	map1["张三"] = 90
-	map1["李四"] = 100
-	fmt.Println(map1) // map[张三:90 李四:100]
+type Resolver struct{}
 
-	// 方式二
-	map2 := map[string]int{
-		"张三": 90,
-		"李四": 100,
-	}
-	fmt.Println(map2) // map[张三:90 李四:100]
-
-	// 方式三
-	map3 := make(map[string]int, 10)
-	map3["张三"] = 90
-	map3["李四"] = 100
-	fmt.Println(map3) // map[张三:90 李四:100]
+func (r *Resolver) Hello() string {
+	return "Hello world!"
 }
+
+func main() {
+	schema := graphql.MustParseSchema(Schema, &Resolver{})
+	http.Handle("/query", &relay.Handler{Schema: schema})
+	log.Fatal(http.ListenAndServe(":8080", nil))
+}
+
+const Schema = `
+    type Query {
+        hello: String!
+    }
+`
