@@ -1,39 +1,27 @@
-name: 部署博客
+name: Build and Deploy
 
 on:
   push:
-    branches: ["main"]
+    branches:
+      - main
+
+permissions:
+  contents: write
 
 jobs:
-  deploy-gh-pages:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout 🛎️
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
-      - name: Setup Pnpm
-        uses: pnpm/action-setup@v4
-
-      - name: 设置 Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: pnpm
-
-      - name: 安装依赖
-        run: pnpm install --frozen-lockfile
-
-      - name: 构建文档
-        env:
-          NODE_OPTIONS: --max_old_space_size=8192
-        run: |-
+      - name: Install and Build 🔧
+        run: |
+          npm install -g pnpm
+          pnpm install
           pnpm build
 
-      - name: 部署文档
+      - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          # 这是文档部署到的分支名称
-          branch: gh-pages
           folder: dist
