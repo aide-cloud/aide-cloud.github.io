@@ -23,15 +23,9 @@ jobs:
           pnpm install
           pnpm build
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-        with:
-          static_site_generator: astro
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./dist
-
       - name: Deploy 🚀
-        uses: actions/deploy-pages@v4
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          # 需要部署到的分支
+          branch: gh-pages
+          folder: dist
